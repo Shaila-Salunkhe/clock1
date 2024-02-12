@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stylish Clock</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e1679e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .clock-container {
+    display: flex;
+  }
+  .clock-box {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 25 25 50px rgba(201, 118, 96, 0.1);
+    font-size: 3em;
+    margin-right: 10px;
+    animation: pulse 1.5s infinite alternate; /* Pulsating effect */
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1.0);
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+
+  
+</style>
+</head>
+<body>
+
+<div class="clock-container">
+  <div class="clock-box" id="hours">00</div>
+  <div class="clock-separator"></div> <!-- Separator with shadow -->
+  <div class="clock-box" id="minutes">00</div>
+  <div class="clock-separator"></div> <!-- Separator with shadow -->
+  <div class="clock-box" id="seconds">00</div>
+  <div class="clock-separator"></div> <!-- Separator with shadow -->
+
+</div>
+
+<script>
+function updateClock() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+  document.getElementById('hours').innerText = hours;
+  document.getElementById('minutes').innerText = minutes;
+  document.getElementById('seconds').innerText = seconds;
+}
+
+// Call updateClock every second
+setInterval(updateClock, 1000);
+
+// Initial call to display the clock immediately
+updateClock();
+</script>
+
+</body>
+</html>
